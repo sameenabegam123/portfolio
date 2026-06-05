@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A. Sameena Begam - Data Analyst Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --purple-primary: #8B5FBF;
+            --purple-dark: #6D28D9;
+            --purple-light: #D8B4FE;
+            --pink-primary: #E8A5C7;
+            --pink-light: #FDF2F8;
+            --pink-dark: #BE185D;
+            --white: #FFFFFF;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --shadow-light: rgba(139, 95, 191, 0.1);
+            --shadow-medium: rgba(139, 95, 191, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f5f7ff 0%, #ffeef8 100%);
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .blob1 {
+            width: 400px;
+            height: 400px;
+            background: var(--purple-primary);
+            top: -200px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            width: 300px;
+            height: 300px;
+            background: var(--pink-primary);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: 5s;
+        }
+
+        .blob3 {
+            width: 250px;
+            height: 250px;
+            background: var(--purple-light);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 10s;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+            .loader.hidden {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loader-icon {
+            font-size: 4rem;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        /* Elegant Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 40px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(232, 165, 199, 0.1) 50%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .name-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            position: relative;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 5px rgba(139, 95, 191, 0.5));
+            }
+
+            to {
+                filter: drop-shadow(0 0 15px rgba(232, 165, 199, 0.8));
+            }
+        }
+
+        .name-title h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--pink-primary), transparent);
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(139, 95, 191, 0.1);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(232, 165, 199, 0.3);
+        }
+
+            .contact-item:hover {
+                transform: translateY(-3px);
+                background: rgba(232, 165, 199, 0.2);
+                box-shadow: 0 5px 15px var(--shadow-light);
+            }
+
+            .contact-item i {
+                font-size: 1.2rem;
+                color: var(--purple-primary);
+            }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 15px 40px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+            section.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        .section-header {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--purple-primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -8px;
+                left: 0;
+                width: 60px;
+                height: 3px;
+                background: linear-gradient(90deg, var(--purple-primary), var(--pink-primary));
+            }
+
+            .section-title i {
+                color: var(--pink-primary);
+                font-size: 1.5rem;
+            }
+
+        /* Professional Summary */
+        #summary {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+            border-left: 5px solid var(--purple-primary);
+        }
+
+            #summary p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: var(--text-dark);
+                font-weight: 300;
+            }
+
+        /* Technical Skills */
+        #skills {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 242, 255, 0.98) 100%);
+            border-left: 5px solid var(--pink-primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.8rem;
+            border-radius: 15px;
+            border: 1px solid rgba(232, 165, 199, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .skill-category::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(139, 95, 191, 0.1), transparent);
+                transition: left 0.5s ease;
+            }
+
+            .skill-category:hover::before {
+                left: 100%;
+            }
+
+            .skill-category:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0 10px 30px var(--shadow-medium);
+            }
+
+            .skill-category h3 {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.4rem;
+                color: var(--purple-primary);
+                margin-bottom: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+        .skill-list {
+            list-style: none;
+        }
+
+            .skill-list li {
+                padding: 0.5rem 0;
+                position: relative;
+                padding-left: 2rem;
+                color: var(--text-dark);
+                font-weight: 300;
+                transition: transform 0.3s ease;
+            }
+
+                .skill-list li:hover {
+                    transform: translateX(5px);
+                    color: var(--pink-primary);
+                }
+
+                .skill-list li::before {
+                    content: "✨";
+                    position: absolute;
+                    left: 0;
+                    color: var(--pink-primary);
+                }
+
+        /* Experience Section */
+        #experience {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(253, 242, 248, 0.98) 100%);
+            border-left: 5px solid var(--purple-primary);
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+
+            .experience-item:hover {
+                transform: translateX(10px);
+            }
+
+            .experience-item::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 3px;
+                height: 100%;
+                background: linear-gradient(to bottom, var(--purple-primary), var(--pink-primary));
+                border-radius: 2px;
+            }
+
+            .experience-item::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 10px;
+                height: 10px;
+                background: var(--pink-primary);
+                border-radius: 50%;
+                border: 3px solid white;
+                box-shadow: 0 0 0 3px rgba(232, 165, 199, 0.3);
+            }
+
+        .job-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--purple-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: var(--pink-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 300;
+        }
+
+            .experience-item li::before {
+                content: "▸";
+                position: absolute;
+                left: 0;
+                color: var(--purple-primary);
+            }
+
+        /* Projects Section */
+        #projects {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+            border-left: 5px solid var(--pink-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid rgba(139, 95, 191, 0.2);
+        }
+
+            .project-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(139, 95, 191, 0.1), transparent);
+                transition: left 0.6s ease;
+                z-index: 1;
+            }
+
+            .project-card:hover::before {
+                left: 100%;
+            }
+
+            .project-card:hover {
+                transform: translateY(-15px) scale(1.02);
+                box-shadow: 0 20px 40px var(--shadow-medium);
+            }
+
+        .project-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .project-image::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+                transform: rotate(45deg);
+                animation: shimmer 3s infinite;
+            }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--purple-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, rgba(139, 95, 191, 0.1), rgba(232, 165, 199, 0.1));
+            color: var(--purple-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(139, 95, 191, 0.3);
+            transition: all 0.3s ease;
+        }
+
+            .tag:hover {
+                background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+                color: white;
+                transform: translateY(-2px);
+            }
+
+        /* Education Section */
+        #education {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 242, 255, 0.98) 100%);
+            border-left: 5px solid var(--purple-primary);
+        }
+
+        .education-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--pink-primary);
+            transition: all 0.3s ease;
+        }
+
+            .education-item:hover {
+                transform: translateX(10px);
+                box-shadow: 0 10px 20px var(--shadow-light);
+            }
+
+        .education-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--purple-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: var(--pink-primary);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .education-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Certifications Section */
+        #certifications {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(253, 242, 248, 0.98) 100%);
+            border-left: 5px solid var(--pink-primary);
+        }
+
+        .cert-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--purple-primary);
+            transition: all 0.3s ease;
+        }
+
+            .cert-item:hover {
+                transform: translateX(10px);
+                box-shadow: 0 10px 20px var(--shadow-light);
+            }
+
+        /* Languages Section */
+        .language-item {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(139, 95, 191, 0.1), rgba(232, 165, 199, 0.1));
+            color: var(--purple-primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            margin: 0.4rem;
+            font-weight: 600;
+            border: 1px solid rgba(139, 95, 191, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
+        }
+
+            .language-item:hover {
+                background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+                color: white;
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px var(--shadow-light);
+            }
+
+        /* WhatsApp Me Section */
+        .whatsapp-me {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(253, 242, 248, 0.98) 100%);
+            border-left: 5px solid var(--purple-primary);
+            text-align: center;
+            padding: 3rem 2.5rem;
+        }
+
+        .whatsapp-me-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .whatsapp-me-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--purple-primary);
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-me-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .whatsapp-button {
+            background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .whatsapp-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px var(--shadow-medium);
+            }
+
+        /* Project Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 2rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            animation: modalSlideIn 0.5s ease;
+            box-shadow: 0 20px 60px var(--shadow-medium);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+            color: white;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+            .modal-close:hover {
+                background: rgba(255, 255, 255, 0.3);
+                transform: rotate(90deg);
+            }
+
+        .modal-body {
+            padding: 2.5rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(139, 95, 191, 0.1), rgba(232, 165, 199, 0.1));
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--purple-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .video-placeholder:hover {
+                background: rgba(139, 95, 191, 0.05);
+            }
+
+        .play-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .video-info {
+            text-align: center;
+            padding: 1rem;
+        }
+
+            .video-info p {
+                margin: 0.5rem 0;
+                font-size: 0.9rem;
+                opacity: 0.7;
+            }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+
+            .video-controls button {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.2rem;
+                cursor: pointer;
+                padding: 5px 10px;
+                border-radius: 5px;
+                transition: background 0.3s ease;
+            }
+
+                .video-controls button:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+            .modal-section h3 {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                color: var(--purple-primary);
+                margin-bottom: 1rem;
+            }
+
+            .modal-section ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .modal-section li {
+                padding: 0.5rem 0;
+                position: relative;
+                padding-left: 2rem;
+                color: var(--text-dark);
+                font-weight: 300;
+            }
+
+                .modal-section li::before {
+                    content: "✦";
+                    position: absolute;
+                    left: 0;
+                    color: var(--pink-primary);
+                }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--pink-primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px var(--shadow-medium);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+            .fab:hover {
+                transform: scale(1.1) rotate(90deg);
+                box-shadow: 0 10px 30px var(--shadow-medium);
+            }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .name-title h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-me-title {
+                font-size: 1.6rem;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .video-container {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <i class="fas fa-spinner loader-icon"></i>
+            <p>Loading Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-blob blob1"></div>
+        <div class="bg-blob blob2"></div>
+        <div class="bg-blob blob3"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-decoration"></div>
+        <div class="header-content">
+            <div class="name-title">
+                <i class="fas fa-user-circle" style="font-size: 2.5rem; color: var(--pink-primary);"></i>
+                <h1>A. Sameena Begam</h1>
+                <i class="fas fa-code" style="font-size: 2.5rem; color: var(--purple-primary);"></i>
+            </div>
+            <p class="subtitle">Data Analyst | Financial Specialist | Web Developer | Graphic Designer</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Erode, Tamil Nadu</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>93442 55568</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:asameenabegam0@gmail.com">asameenabegam0@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Professional Summary -->
+        <section id="summary">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-user-tie"></i>
+                    Professional Summary
+                </h2>
+            </div>
+            <p>
+                Data Analyst with expertise in Excel VBA automation, MS Access database management, and financial reporting. Specialized in creating automated systems for data extraction, WhatsApp messaging integration, and comprehensive company analysis. Skilled in developing responsive websites and creating professional graphic designs for various industries.
+            </p>
+        </section>
+
+        <!-- Technical Skills -->
+        <section id="skills">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-cogs"></i>
+                    Technical Skills
+                </h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Data & Analytics</h3>
+                    <ul class="skill-list">
+                        <li>Advanced Excel (Pivot Tables, VLOOKUP, Dashboards)</li>
+                        <li>Excel VBA Automation</li>
+                        <li>MS Access (Database Management)</li>
+                        <li>SQL (Learning)</li>
+                        <li>Power BI (Learning)</li>
+                        <li>Python – Basics (Learning)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-calculator"></i> Accounting</h3>
+                    <ul class="skill-list">
+                        <li>Tally ERP</li>
+                        <li>GST Return Filing</li>
+                        <li>Accounts Handling</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Web Development</h3>
+                    <ul class="skill-list">
+                        <li>HTML, CSS</li>
+                        <li>Basic JavaScript</li>
+                        <li>Responsive Web Design</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section id="experience">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    Work Experience
+                </h2>
+            </div>
+            <div class="experience-item">
+                <h3 class="job-title">Junior Accountant</h3>
+                <div class="company">KKSK – Erode</div>
+                <div class="date">2023 – 2025</div>
+                <ul>
+                    <li>Managed GST filing and accounting records with full compliance</li>
+                    <li>Maintained financial data and reports using Excel and Tally</li>
+                    <li>Automated repetitive tasks using Excel VBA, improving efficiency</li>
+                    <li>Assisted in data organization and reporting for business decisions</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3 class="job-title">Freelancer – Excel VBA Developer, Web Development, Graphic Designer</h3>
+                <div class="date">2022 – Present</div>
+                <ul>
+                    <li>Developed Excel VBA tools for data automation and reporting</li>
+                    <li>Created responsive websites for various businesses</li>
+                    <li>Designed logos, pamphlets, banners, and T-shirt graphics</li>
+                    <li>Implemented WhatsApp automation for business messaging</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-folder-open"></i>
+                    Projects
+                </h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openProjectModal('whatsapp-automation')">
+                    <div class="project-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">WhatsApp Automation System</h3>
+                        <p class="project-description">Daily automation using Excel VBA to extract data and send messages via local WhatsApp API with user permission</p>
+                        <div class="project-tags">
+                            <span class="tag">Excel VBA</span>
+                            <span class="tag">WhatsApp API</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" onclick="openProjectModal('company-analysis')">
+                    <div class="project-image">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Multi-Company Analysis System</h3>
+                        <p class="project-description">Daily data input and analysis system for multiple companies with monthly/yearly reports using MS Access</p>
+                        <div class="project-tags">
+                            <span class="tag">MS Access</span>
+                            <span class="tag">Excel</span>
+                            <span class="tag">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" onclick="openProjectModal('solar-website')">
+                    <div class="project-image">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Solar Company Website</h3>
+                        <p class="project-description">Complete responsive website development for a solar energy company</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" onclick="openProjectModal('graphic-design')">
+                    <div class="project-image">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Graphic Design Collection</h3>
+                        <p class="project-description">Professional logo design, pamphlets, and marketing materials for various clients</p>
+                        <div class="project-tags">
+                            <span class="tag">Logo Design</span>
+                            <span class="tag">Pamphlets</span>
+                            <span class="tag">Marketing Materials</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Education
+                </h2>
+            </div>
+            <div class="education-item">
+                <h3 class="education-title">Bachelor of Science in Computer Technology</h3>
+                <div class="education-school">Vellalar College for Arts and Science</div>
+                <div class="education-date">2021 – 2023</div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-certificate"></i>
+                    Certifications & Learning
+                </h2>
+            </div>
+            <div class="cert-item">
+                <h3>Data Analysis (In Progress)</h3>
+                <div class="education-date">Current</div>
+            </div>
+            <div class="cert-item">
+                <h3>SQL & Power BI (Learning)</h3>
+                <div class="education-date">In Progress</div>
+            </div>
+            <div class="cert-item">
+                <h3>Python for Data Analysis (Basics)</h3>
+                <div class="education-date">In Progress</div>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-language"></i>
+                    Languages
+                </h2>
+            </div>
+            <div>
+                <span class="language-item">Tamil</span>
+                <span class="language-item">English</span>
+            </div>
+        </section>
+
+        <!-- WhatsApp Me Section -->
+        <section class="whatsapp-me">
+            <div class="whatsapp-me-content">
+                <h2 class="whatsapp-me-title">WhatsApp Me</h2>
+                <p class="whatsapp-me-description">Have a project in mind or want to discuss potential collaborations? Feel free to reach out to me directly on WhatsApp. I'm always excited to connect with new clients and opportunities!</p>
+                <button class="whatsapp-button" onclick="openWhatsApp()">
+                    Chat on WhatsApp
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Project Title</h2>
+                <p class="modal-subtitle">Detailed Project Information</p>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <div class="video-placeholder" id="videoPlaceholder">
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <div class="video-info">
+                            <p>Click to play demo video</p>
+                            <p id="videoLocation">Video location: /videos/WATSAPP.MP4</p>
+                            <p id="videoName">Name: WATSAPP.MP4</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="modalDescription">
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>Detailed description of the project, including the problem it solves, technologies used, and outcomes achieved.</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Feature 1: Description of key functionality</li>
+                            <li>Feature 2: Description of key functionality</li>
+                            <li>Feature 3: Description of key functionality</li>
+                        </ul>
+                    </div>
+                    <div class="modal-section">
+                        <h3>Technologies Used</h3>
+                        <p>HTML5, CSS3, JavaScript, Excel VBA, MS Access</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hide loader after page loads
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Project Modal Functions
+        function openProjectModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const videoPlaceholder = document.getElementById('videoPlaceholder');
+            const videoLocation = document.getElementById('videoLocation');
+            const videoName = document.getElementById('videoName');
+
+            // Project details
+            const projects = {
+                'whatsapp-automation': {
+                    title: 'WhatsApp Automation System',
+                    videoLocation: 'videos/WATSAPP.MP4',
+                    videoName: 'WATSAPP.MP4',
+                    description: `
+                                            <div class="modal-section">
+                                                <h3>Project Overview</h3>
+                                                <p>Developed a comprehensive automation system that extracts data from Excel files and sends messages to multiple WhatsApp groups with user permission. The system reduces manual messaging time by 80% and ensures consistent communication across all groups.</p>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Key Features</h3>
+                                                <ul>
+                                                    <li>Automated data extraction from Excel using VBA</li>
+                                                    <li>User permission system for message sending</li>
+                                                    <li>Multi-group WhatsApp messaging capability</li>
+                                                    <li>Customizable message templates</li>
+                                                    <li>Error handling and logging system</li>
+                                                    <li>Scheduled daily automation</li>
+                                                </ul>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Technologies Used</h3>
+                                                <p>Excel VBA, WhatsApp API, Local Server, Data Export to Text Files</p>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Business Impact</h3>
+                                                <ul>
+                                                    <li>Reduced manual messaging time by 80%</li>
+                                                    <li>Improved consistency in group communications</li>
+                                                    <li>Automated daily reporting and updates</li>
+                                                </ul>
+                                            </div>
+                                        `
+                },
+                'company-analysis': {
+                    title: 'Multi-Company Analysis System',
+                    videoLocation: 'videos/COMPANY.MP4',
+                    videoName: 'COMPANY.MP4',
+                    description: `
+                                            <div class="modal-section">
+                                                <h3>Project Overview</h3>
+                                                <p>Created a comprehensive data management and analysis system for multiple companies, enabling daily data input and generating detailed monthly and yearly reports. The system provides insights into company performance and trends using MS Access as the backend database.</p>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Key Features</h3>
+                                                <ul>
+                                                    <li>Daily data input interface for multiple companies</li>
+                                                    <li>Automated report generation for monthly and yearly analysis</li>
+                                                    <li>MS Access database for centralized data storage</li>
+                                                    <li>Excel-based dashboards with KPI tracking</li>
+                                                    <li>Comparative analysis between companies</li>
+                                                    <li>Trend analysis and forecasting capabilities</li>
+                                                </ul>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Technologies Used</h3>
+                                                <p>MS Access, Excel VBA, Pivot Tables, Data Visualization</p>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Business Impact</h3>
+                                                <ul>
+                                                    <li>Streamlined data management across multiple companies</li>
+                                                    <li>Improved decision-making through comprehensive analysis</li>
+                                                    <li>Time savings of 60% in report generation</li>
+                                                </ul>
+                                            </div>
+                                        `
+                },
+                'solar-website': {
+                    title: 'Solar Company Website',
+                    videoLocation: 'videos/SOLAR.MP4',
+                    videoName: 'SOLAR.MP4',
+                    description: `
+                                            <div class="modal-section">
+                                                <h3>Project Overview</h3>
+                                                <p>Designed and developed a complete responsive website for a solar energy company, showcasing their services, products, and case studies. The website features a modern design with smooth animations and mobile responsiveness to reach customers across all devices.</p>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Key Features</h3>
+                                                <ul>
+                                                    <li>Fully responsive design for all devices</li>
+                                                    <li>Service showcase with detailed descriptions</li>
+                                                    <li>Product gallery with filtering options</li>
+                                                    <li>Contact form with validation</li>
+                                                    <li>Customer testimonials section</li>
+                                                    <li>Smooth scrolling navigation</li>
+                                                    <li>SEO-friendly structure</li>
+                                                </ul>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Technologies Used</h3>
+                                                <p>HTML5, CSS3, JavaScript, Responsive Design, Bootstrap</p>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Business Impact</h3>
+                                                <ul>
+                                                    <li>Improved online presence and brand visibility</li>
+                                                    <li>Increased customer inquiries by 40%</li>
+                                                    <li>Mobile-friendly design for broader reach</li>
+                                                </ul>
+                                            </div>
+                                        `
+                },
+                'graphic-design': {
+                    title: 'Graphic Design Collection',
+                    videoLocation: 'videos/GRAPHIC.MP4',
+                    videoName: 'GRAPHIC.MP4',
+                    description: `
+                                            <div class="modal-section">
+                                                <h3>Project Overview</h3>
+                                                <p>Created a comprehensive collection of graphic designs including logos, pamphlets, banners, and marketing materials for various clients. Each design is tailored to the client's brand identity and target audience, ensuring maximum impact and recognition.</p>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Design Portfolio</h3>
+                                                <ul>
+                                                    <li><strong>Logo Design:</strong> Professional logos for startups and established businesses</li>
+                                                    <li><strong>Pamphlets:</strong> Informational and promotional materials with clear hierarchy</li>
+                                                    <li><strong>Banners:</strong> Eye-catching designs for events and promotions</li>
+                                                    <li><strong>T-shirt Designs:</strong> Creative and wearable art for various purposes</li>
+                                                    <li><strong>Marketing Materials:</strong> Brochures, flyers, and business cards</li>
+                                                </ul>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Design Process</h3>
+                                                <ul>
+                                                    <li>Client consultation and requirement gathering</li>
+                                                    <li>Concept development and mood boards</li>
+                                                    <li>Multiple design iterations and feedback</li>
+                                                    <li>Final design delivery in multiple formats</li>
+                                                    <li>Brand guidelines and usage instructions</li>
+                                                </ul>
+                                            </div>
+                                            <div class="modal-section">
+                                                <h3>Technologies Used</h3>
+                                                <p>Adobe Photoshop, Adobe Illustrator, CorelDRAW, Canva</p>
+                                            </div>
+                                        `
+                }
+            };
+
+            // Set project details
+            modalTitle.textContent = projects[projectId].title;
+            modalDescription.innerHTML = projects[projectId].description;
+
+            // Update video placeholder with project-specific video details
+            videoLocation.textContent = `Video location: ${projects[projectId].videoLocation}`;
+            videoName.textContent = `Name: ${projects[projectId].videoName}`;
+
+            // Add click event to video placeholder
+            videoPlaceholder.onclick = function () {
+                playVideo(projects[projectId].videoLocation);
+            };
+
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function playVideo(videoSrc) {
+            const videoPlaceholder = document.getElementById('videoPlaceholder');
+            const videoContainer = videoPlaceholder.parentElement;
+
+            // Create video element
+            const video = document.createElement('video');
+            video.src = videoSrc;
+            video.controls = true;
+            video.autoplay = true;
+            video.loop = true;
+            video.muted = true;
+            video.style.width = '100%';
+            video.style.height = '100%';
+            video.style.objectFit = 'contain';
+
+            // Create video controls overlay
+            const videoControls = document.createElement('div');
+            videoControls.className = 'video-controls';
+            videoControls.innerHTML = `
+                            <button onclick="togglePlayPause()"><i class="fas fa-pause" id="playPauseIcon"></i></button>
+                            <span id="videoTime">0:00 / 0:00</span>
+                            <button onclick="closeModal()"><i class="fas fa-times"></i></button>
+                        `;
+
+            // Replace placeholder with video
+            videoContainer.innerHTML = '';
+            videoContainer.appendChild(video);
+            videoContainer.appendChild(videoControls);
+
+            // Update time display
+            video.addEventListener('timeupdate', function () {
+                const currentTime = formatTime(video.currentTime);
+                const duration = formatTime(video.duration);
+                document.getElementById('videoTime').textContent = `${currentTime} / ${duration}`;
+            });
+
+            // Handle video events
+            video.addEventListener('loadedmetadata', function () {
+                document.getElementById('videoTime').textContent = '0:00 / ' + formatTime(video.duration);
+            });
+
+            video.addEventListener('error', function () {
+                videoContainer.innerHTML = `
+                            <div class="video-error">
+                                <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: var(--pink-primary);"></i>
+                                <p style="margin-top: 1rem; color: var(--text-light);">Unable to load video. Please check the video file path.</p>
+                                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Current source: ${videoSrc}</p>
+                            </div>
+                        `;
+            });
+        }
+
+        function togglePlayPause() {
+            const video = document.querySelector('video');
+            const icon = document.getElementById('playPauseIcon');
+
+            if (video) {
+                if (video.paused) {
+                    video.play();
+                    icon.className = 'fas fa-pause';
+                } else {
+                    video.pause();
+                    icon.className = 'fas fa-play';
+                }
+            }
+        }
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+
+            // Reset video placeholder
+            const videoContainer = document.querySelector('.video-container');
+            videoContainer.innerHTML = `
+                            <div class="video-placeholder" id="videoPlaceholder">
+                                <i class="fas fa-play-circle play-icon"></i>
+                                <div class="video-info">
+                                    <p>Click to play demo video</p>
+                                    <p id="videoLocation">Video location: /videos/WATSAPP.MP4</p>
+                                    <p id="videoName">Name: WATSAPP.MP4</p>
+                                </div>
+                            </div>
+                        `;
+        }
+
+        // Open WhatsApp chat
+        function openWhatsApp() {
+            const phoneNumber = "9344255568";
+            const message = "Hello! I'm interested in your services.";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide floating action button based on scroll position
+        window.addEventListener('scroll', function () {
+            const fab = document.querySelector('.fab');
+            if (window.pageYOffset > 300) {
+                fab.style.display = 'flex';
+            } else {
+                fab.style.display = 'none';
+            }
+        });
+
+        // Add floating animation to background blobs
+        const blobs = document.querySelectorAll('.bg-blob');
+        blobs.forEach((blob, index) => {
+            blob.style.animationDuration = `${20 + index * 5}s`;
+            blob.style.animationDelay = `${index * 2}s`;
+        });
+
+        // Add user interaction to enable video autoplay
+        document.addEventListener('click', function () {
+            // Enable audio context after user interaction
+            if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
